@@ -57,4 +57,15 @@ public class JwtTokenUtils {
                 .parseClaimsJws(token)
                 .getBody();
     }
+    public String expireToken(String token) {
+        // 토큰의 클레임 정보를 가져옴
+        Claims claims = parseClaims(token);
+        // 현재 시간 이전으로 만료 시킴 (즉시 만료)
+        claims.setExpiration(Date.from(Instant.now()));
+        // 새로운 토큰 생성하여 반환
+        return Jwts.builder()
+                .setClaims(claims)
+                .signWith(signingKey)
+                .compact();
+    }
 }

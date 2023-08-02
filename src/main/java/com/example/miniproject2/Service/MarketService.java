@@ -35,6 +35,7 @@ public class MarketService {
         newItem.setDescription(dto.getDescription());
         newItem.setWriter(dto.getWriter());
         newItem.setPassword(dto.getPassword());
+        newItem.setUser(dto.getUser());
         newItem.setMin_price_wanted(dto.getMinPriceWanted());
         newItem.setStatus("판매중");
         return ItemDto.fromEntity(itemRepository.save(newItem));
@@ -62,9 +63,10 @@ public class MarketService {
         Item item;
         if (optionalItem.isPresent()) {
             item = optionalItem.get();
-            if (!dto.getPassword().equalsIgnoreCase(item.getPassword())) {
-                return null;
-            }
+//            if (!dto.getPassword().equalsIgnoreCase(item.getPassword())) {
+//                return null;
+//            }
+            if(!dto.getUser().equals(item.getUser())) return null;
             item.setTitle(dto.getTitle());
             item.setDescription(dto.getDescription());
             item.setMin_price_wanted(dto.getMinPriceWanted());
@@ -79,7 +81,11 @@ public class MarketService {
         Optional<Item> optionalItem = itemRepository.findById(id);
         if (optionalItem.isPresent()) {
             Item item = optionalItem.get();
-            if (dto.getPassword().equalsIgnoreCase(item.getPassword())) {
+//            if (dto.getPassword().equalsIgnoreCase(item.getPassword())) {
+//                itemRepository.delete(item);
+//                return true;
+//            }
+            if(dto.getUser().equals(item.getUser())) {
                 itemRepository.delete(item);
                 return true;
             }

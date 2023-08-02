@@ -18,5 +18,7 @@ public class Item {
     private String status;
     private String writer;
     private String password;
+    @ManyToOne
+    private User user;
 
 }

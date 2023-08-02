@@ -1,6 +1,7 @@
 package com.example.miniproject2.Dto;
 
 import com.example.miniproject2.Entity.Item;
+import com.example.miniproject2.Entity.User;
 import lombok.Data;
 
 @Data
@@ -13,6 +14,7 @@ public class ItemDto {
     private String password;
     private String status;
     private String imageUrl;
+    private User user;
 
     public static ItemDto fromEntity(Item entity) {
         ItemDto dto = new ItemDto();
@@ -24,6 +26,7 @@ public class ItemDto {
         dto.setStatus(entity.getStatus());
         dto.setMinPriceWanted(entity.getMin_price_wanted());
         dto.setImageUrl(entity.getImage_url());
+        dto.setUser(entity.getUser());
 
         return dto;
     }

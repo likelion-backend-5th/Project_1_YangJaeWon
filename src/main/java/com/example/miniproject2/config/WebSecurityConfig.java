@@ -23,28 +23,30 @@ public class WebSecurityConfig {
                         authHttp -> authHttp
                                 .requestMatchers(
                                         "/no-auth",
-                                        "/users/login"
+                                        "/users/login",
+                                        "/users/register",
+                                        "/items/**"
                                 ).permitAll()
-                                .requestMatchers(
-                                        "/",
-                                        "/users/register"
-                                )
-                                .anonymous()
-                                .anyRequest()
-                                .authenticated()
+//                                .requestMatchers(
+//                                        "/",
+//                                        "/users/register"
+//                                )
+//                                .anonymous()
+//                                .anyRequest()
+//                                .authenticated()
                 )
-//                .formLogin(
-//                        formLogin -> formLogin
-//                                .loginPage("/users/login")
-//                                .defaultSuccessUrl("/users/my-profile")
-//                                .failureUrl("/users/login?fail")
-//                                .permitAll()
-//                )
-//                .logout(
-//                        logout -> logout
-//                                .logoutUrl("/users/logout")
-//                                .logoutSuccessUrl("/users/login")
-//                )
+                .formLogin(
+                        formLogin -> formLogin
+                                .loginPage("/users/login")
+                                .defaultSuccessUrl("/users/my-profile")
+                                .failureUrl("/users/login?fail")
+                                .permitAll()
+                )
+                .logout(
+                        logout -> logout
+                                .logoutUrl("/users/logout")
+                                .logoutSuccessUrl("/users/login")
+                )
         ;
         return http.build();
     }

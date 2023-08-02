@@ -1,6 +1,7 @@
 package com.example.miniproject2.Dto;
 
 import com.example.miniproject2.Entity.Comment;
+import com.example.miniproject2.Entity.Item;
 import lombok.Data;
 
 @Data
@@ -11,6 +12,7 @@ public class CommentDto {
     private String content;
     private String reply;
     private Long itemId;
+    private Item item;
 
     public static CommentDto fromEntity(Comment entity) {
         CommentDto dto = new CommentDto();

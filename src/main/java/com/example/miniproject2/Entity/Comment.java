@@ -16,9 +16,14 @@ public class Comment {
     @Column(name = "item_id")
     private Long itemId;
 
+    @ManyToOne
+    private Item item;
+
     private String writer;
     private String password;
     private String content;
     private String reply;
+    @ManyToOne
+    private User user;
 
 }

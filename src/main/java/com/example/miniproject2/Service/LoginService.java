@@ -25,4 +25,8 @@ public class LoginService {
             return null;
         }
     }
+
+    public boolean IsExistEmail(String email) {
+        return repository.existsByEmail(email);
+    }
 }

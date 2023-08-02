@@ -13,9 +13,14 @@ public class Negotiation {
     //@Column(name = "item_id")
     private Long itemId;
     //@Column(name = "suggested_price")
+    @Column(nullable = false)
     private int suggestedPrice;
     private String status;
+    @Column(nullable = false)
     private String writer;
+    @Column(nullable = false)
     private String password;
+    @ManyToOne
+    private User user;
 
 }
